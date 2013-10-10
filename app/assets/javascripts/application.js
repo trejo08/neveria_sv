@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
 var map;
 $(function(){
-	if ($('#map-canvas').length) {		
+	if ($('#map-canvas').length) {
+
 		google.maps.event.addDomListener(window, 'load', initialize);
 	} else{
 		alert('no esta el div');
@@ -46,13 +48,14 @@ function setMarkers(map, locations) {
 		map.setZoom(12);
 		// map.setCenter(e.getPosition());
 		map.panTo(this.getPosition());
-		// alert(this.getTitle());
+		alert(this.getTitle());
 	});
   }
 }
 
 
 function initialize() {
+
 	var san_salvador = new google.maps.LatLng(13.713371, -89.200112);
 	var mapOptions = {
 		//center: san_salvador,
@@ -84,9 +87,7 @@ function initialize() {
 				map: map,
 				position: pos,
 				content: 'Esta es su posicion actual.'
-			});
-
-			
+			});			
 
 			map.setCenter(pos);
 		}, function() {
@@ -99,18 +100,18 @@ function initialize() {
 }
 
 function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
+	if (errorFlag) {
+		var content = 'Error: The Geolocation service failed.';
+	} else {
+		var content = 'Error: Your browser doesn\'t support geolocation.';
+	}
 
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
+	var options = {
+		map: map,
+		position: new google.maps.LatLng(60, 105),
+		content: content
+	};
 
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
+	var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(options.position);
 }
