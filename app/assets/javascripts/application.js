@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .
-
+var map;
 $(function(){
 	if ($('#map-canvas').length) {		
 		google.maps.event.addDomListener(window, 'load', initialize);
@@ -59,7 +60,9 @@ function initialize() {
 		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	var map = new google.maps.Map(document.getElementById("map-canvas"),
+	//var map = new google.maps.Map(document.getElementById("map-canvas"),
+	    //mapOptions);
+	map = new google.maps.Map(document.getElementById("map-canvas"),
 	    mapOptions);
 
 	//seteando las sucursales
