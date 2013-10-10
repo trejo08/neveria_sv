@@ -42,7 +42,7 @@ function setMarkers(map, locations) {
 
     //agregando efecto center a cada marker
     google.maps.event.addListener(marker, 'click', function() {
-		map.setZoom(9);
+		map.setZoom(12);
 		// map.setCenter(e.getPosition());
 		map.panTo(this.getPosition());
 		// alert(this.getTitle());
@@ -55,8 +55,8 @@ function initialize() {
 	var san_salvador = new google.maps.LatLng(13.713371, -89.200112);
 	var mapOptions = {
 		//center: san_salvador,
-        draggable:false,
-		zoom: 9,
+        draggable:true,
+		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map-canvas"),
