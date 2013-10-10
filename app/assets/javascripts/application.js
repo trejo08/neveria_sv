@@ -25,8 +25,8 @@ $(function(){
 
 function initialize() {
 	var mapOptions = {
-		center: new google.maps.LatLng(-34.397, 150.644),
-		zoom: 8,
+		center: new google.maps.LatLng(13.713371, -89.200112),
+		zoom: 9,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map-canvas"),
