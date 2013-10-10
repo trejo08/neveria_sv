@@ -2,9 +2,14 @@
 <html>
 <head>
   <title>DemoNeveria</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%# if controller.name == "main" && controller.action_name == "index" %>
+
+  	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBPmRsyOOc_KkUv4f3DJZU9hMfOnDhkC5A&sensor=true" %>
+  <%#end%>
 </head>
 <body>
 

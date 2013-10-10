@@ -13,3 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+	if ($('#map-canvas').length) {		
+		google.maps.event.addDomListener(window, 'load', initialize);
+		// initialize();
+	} else{
+		alert('no esta el div');
+	};
+});
+
+function initialize() {
+	var mapOptions = {
+		center: new google.maps.LatLng(-34.397, 150.644),
+		zoom: 8,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"),
+	    mapOptions);
+}
