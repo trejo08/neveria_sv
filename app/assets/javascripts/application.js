@@ -78,8 +78,6 @@ function initialize() {
 				position: pos,
 				title:"Esta es su posicion actual!"
 			});
-			var api_marker = new google.maps.Marker();
-			console.dir(api_marker);
 			posicion_actual.setMap(map);
 
 			var infowindow = new google.maps.InfoWindow({
