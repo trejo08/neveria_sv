@@ -5,41 +5,43 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-HwqAE71osXRPbQDuIVCeIIVsseelCE&sensor=true" %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyD-rj45eJScsXqqXeIX0xb0K_cvasHqgOA&sensor=true" %>
+  
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-        	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        		<span class="icon-bar"></span>
-        		<span class="icon-bar"></span>
-        		<span class="icon-bar"></span>
-        	</button>
-        	<a class="brand" href="#">LA NEVERIA</a>
-        	<div class="nav-collapse collapse">
-        		<ul class="nav">
-        			<li class="">
-        				<a href="#">INICIO</a>
-        			</li>
-        			<li class="">
-        				<a href="#">SUCURSALES</a>
-        			</li>
-        			<li class="">
-        				<a href="#">PRODUCTOS</a>
-        			</li>
-        			<li class="">
-        				<a href="#">ACERCA DE</a>
-        			</li>
-        			<li class="">
-        				<a href="#">CONTACTENOS</a>
-        			</li>
-        		</ul>
-        	</div>
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">LA NEVERIA</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="">
+              <a href="#">INICIO</a>
+            </li>
+            <li class="">
+              <a href="#">SUCURSALES</a>
+            </li>
+            <li class="">
+              <a href="#">PRODUCTOS</a>
+            </li>
+            <li class="">
+              <a href="#">ACERCA DE</a>
+            </li>
+            <li class="">
+              <a href="#">CONTACTENOS</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
-    <%= yield %>
+  </div>
+  <%= yield %>
 
 </body>
 </html>
