@@ -23,9 +23,9 @@ $(function(){
 });
 
 var sucursales = [
-  ['San Salvador', 13.713371, -89.200112, 1],
-  ['Santa Ana', 13.999536,-89.551991, 2],
-  ['San Miguel', 13.480782,-88.176323, 3]
+  ['Sucursal San Salvador', 13.713371, -89.200112, 1],
+  ['Sucursal Santa Ana', 13.999536,-89.551991, 2],
+  ['Sucursal San Miguel', 13.480782,-88.176323, 3]
 ];
 
 function setMarkers(map, locations) {
@@ -54,7 +54,7 @@ function setMarkers(map, locations) {
 function initialize() {
 	var san_salvador = new google.maps.LatLng(13.713371, -89.200112);
 	var mapOptions = {
-		center: san_salvador,
+		//center: san_salvador,
         draggable:false,
 		zoom: 9,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -62,13 +62,54 @@ function initialize() {
 	var map = new google.maps.Map(document.getElementById("map-canvas"),
 	    mapOptions);
 
-	// var markers = new google.maps.Marker(
-	// 	{
-	// 	    position: san_salvador,
-	// 	    title:"Sucursal San Salvador!"
-	// 	});
-	// markers.setMap(map);
-
 	//seteando las sucursales
 	setMarkers(map, sucursales);
+
+	// Try HTML5 geolocation
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var pos = new google.maps.LatLng(position.coords.latitude,
+				position.coords.longitude);
+
+			var posicion_actual = new google.maps.Marker({
+				position: pos,
+				title:"Esta es su posicion actual!"
+			});
+			var api_marker = new google.maps.Marker();
+			console.dir(api_marker);
+			posicion_actual.setMap(map);
+
+			var infowindow = new google.maps.InfoWindow({
+				map: map,
+				position: pos,
+				content: 'Esta es su posicion actual.'
+			});
+
+			
+
+			map.setCenter(pos);
+		}, function() {
+			handleNoGeolocation(true);
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleNoGeolocation(false);
+	}
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
 }
