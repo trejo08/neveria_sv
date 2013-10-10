@@ -24,3 +24,9 @@ body {
 #map-canvas { 
 	height: 100% !important;
 }
+#map-canvas img{ 
+	max-width: none;
+}
+#map-canvas label{ 
+	width: auto; display:inline;
+}

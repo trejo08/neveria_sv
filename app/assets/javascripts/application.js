@@ -45,10 +45,10 @@ function setMarkers(map, locations) {
 
     //agregando efecto center a cada marker
     google.maps.event.addListener(marker, 'click', function() {
-		map.setZoom(12);
+		map.setZoom(15);
 		// map.setCenter(e.getPosition());
 		map.panTo(this.getPosition());
-		alert(this.getTitle());
+		// alert(this.getTitle());
 	});
   }
 }
