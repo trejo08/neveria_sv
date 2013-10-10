@@ -17,18 +17,47 @@
 $(function(){
 	if ($('#map-canvas').length) {		
 		google.maps.event.addDomListener(window, 'load', initialize);
-		// initialize();
 	} else{
 		alert('no esta el div');
 	};
 });
 
+var sucursales = [
+  ['San Salvador', 13.713371, -89.200112, 1],
+  ['Santa Ana', 13.999536,-89.551991, 2],
+  ['San Miguel', 13.480782,-88.176323, 3]
+];
+
+function setMarkers(map, locations) {
+  for (var i = 0; i < locations.length; i++) {
+    var sucursal = locations[i];
+    var myLatLng = new google.maps.LatLng(sucursal[1], sucursal[2]);
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: sucursal[0],
+        zIndex: sucursal[3]
+    });
+  }
+}
+
+
 function initialize() {
+	var san_salvador = new google.maps.LatLng(13.713371, -89.200112);
 	var mapOptions = {
-		center: new google.maps.LatLng(13.713371, -89.200112),
+		center: san_salvador,
 		zoom: 9,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map-canvas"),
 	    mapOptions);
+
+	// var markers = new google.maps.Marker(
+	// 	{
+	// 	    position: san_salvador,
+	// 	    title:"Sucursal San Salvador!"
+	// 	});
+	// markers.setMap(map);
+
+	setMarkers(map, sucursales);
 }
