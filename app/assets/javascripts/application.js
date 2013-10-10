@@ -34,10 +34,19 @@ function setMarkers(map, locations) {
     var myLatLng = new google.maps.LatLng(sucursal[1], sucursal[2]);
     var marker = new google.maps.Marker({
         position: myLatLng,
+        draggable:false,
         map: map,
         title: sucursal[0],
         zIndex: sucursal[3]
     });
+
+    //agregando efecto center a cada marker
+    google.maps.event.addListener(marker, 'click', function() {
+		map.setZoom(9);
+		// map.setCenter(e.getPosition());
+		map.panTo(this.getPosition());
+		// alert(this.getTitle());
+	});
   }
 }
 
@@ -46,6 +55,7 @@ function initialize() {
 	var san_salvador = new google.maps.LatLng(13.713371, -89.200112);
 	var mapOptions = {
 		center: san_salvador,
+        draggable:false,
 		zoom: 9,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
@@ -59,5 +69,6 @@ function initialize() {
 	// 	});
 	// markers.setMap(map);
 
+	//seteando las sucursales
 	setMarkers(map, sucursales);
 }
